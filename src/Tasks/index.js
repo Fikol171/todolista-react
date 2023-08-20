@@ -1,16 +1,20 @@
 import "./styled.css";
 
-const TasksList = ({ tasks, removeTask, toggleTaskDone }) => {
+const TasksList = ({ tasks, removeTask, toggleTaskDone, hideDone }) => {
   return (
-    <ul>
+    <ul className="decorationStyle">
       {tasks.map(({ id, content, done }) => (
-        <li key={id}>
-          <button onClick={() => removeTask(id)}>🗑</button>
+        <li className={`item ${hideDone && done ? "hideAll" : ""}`} key={id}>
+          <button className="buttons" onClick={() => removeTask(id)}>
+            🗑
+          </button>
           <span className={`${done ? "toggleItem" : ""}`}>
             {" "}
             {content} {id}{" "}
           </span>
-          <button onClick={() => toggleTaskDone(id)}>Mark task as done</button>
+          <button className="buttons" onClick={() => toggleTaskDone(id)}>
+            {done ? "✔" : ""}
+          </button>
         </li>
       ))}
     </ul>

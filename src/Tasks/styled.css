@@ -1,3 +1,23 @@
 .toggleItem {
   text-decoration: line-through;
 }
+.decorationStyle {
+  list-style-type: none;
+  padding-left: 0;
+}
+.hideAll {
+  display: none;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.item {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  max-width: 500px;
+}

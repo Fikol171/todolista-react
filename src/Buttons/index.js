@@ -1,9 +1,16 @@
-const Buttons = ({ tasks, toggleAllDone }) => {
+const Buttons = ({ tasks, toggleAllDone, hideDoneTasks, hideDone }) => {
   if (tasks.length) {
     return (
       <>
-        <button>Hide all done tasks</button>
-        <button onClick={toggleAllDone}>Set all task done</button>
+        <button onClick={hideDoneTasks}>
+          {hideDone ? "Show" : "Hide"} all done tasks
+        </button>
+        <button
+          disabled={tasks.every((task) => task.done)}
+          onClick={toggleAllDone}
+        >
+          Set all task done
+        </button>
       </>
     );
   }
