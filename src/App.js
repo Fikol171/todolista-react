@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Buttons from "./Buttons";
+import Form from "./Form";
+import Header from "./Header";
+import Section from "./Section";
+import TasksList from "./Tasks";
 
 function App() {
+  const [tasks, setTasks] = useState([
+    { content: "Zrobic sniadanie", done: true, id: 1 },
+    { content: "Nauczyc sie reduxa", done: false, id: 2 },
+  ]);
+
+  const addnewTask = (content) => {
+    setTasks([
+      ...tasks,
+      {
+        content,
+        done: false,
+        id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+      },
+    ]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header title="To do list " />
+      <Section body={<Form addnewTask={addnewTask} />} />
+      <Section
+        title="Tasks list"
+        body={<TasksList tasks={tasks} />}
+        extraHeaderContent={<Buttons tasks={tasks} />}
+      />
+    </>
   );
 }
 
