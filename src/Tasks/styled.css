@@ -5,9 +5,7 @@
   list-style-type: none;
   padding-left: 0;
 }
-.hideAll {
-  display: none;
-}
+
 .buttons {
   display: flex;
   justify-content: center;
@@ -20,4 +18,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   max-width: 500px;
+}
+.hideAll {
+  display: none;
 }

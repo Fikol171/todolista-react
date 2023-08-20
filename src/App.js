@@ -14,6 +14,7 @@ function App() {
 
   const hideDoneTasks = () => {
     setHideDone((hideDone) => !hideDone);
+    console.log("dziala");
   };
 
   const removeTask = (id) => {
