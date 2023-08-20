@@ -1,9 +1,9 @@
-const Buttons = ({ tasks }) => {
+const Buttons = ({ tasks, toggleAllDone }) => {
   if (tasks.length) {
     return (
       <>
         <button>Hide all done tasks</button>
-        <button>Set all task done</button>
+        <button onClick={toggleAllDone}>Set all task done</button>
       </>
     );
   }
