@@ -15,6 +15,17 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const toggleTaskDone = (id) => {
+    setTasks((tasks) =>
+      tasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, done: !task.done };
+        }
+        return task;
+      })
+    );
+  };
+
   const addnewTask = (content) => {
     setTasks([
       ...tasks,
@@ -32,7 +43,13 @@ function App() {
       <Section body={<Form addnewTask={addnewTask} />} />
       <Section
         title="Tasks list"
-        body={<TasksList tasks={tasks} removeTask={removeTask} />}
+        body={
+          <TasksList
+            tasks={tasks}
+            removeTask={removeTask}
+            toggleTaskDone={toggleTaskDone}
+          />
+        }
         extraHeaderContent={<Buttons tasks={tasks} />}
       />
     </>
