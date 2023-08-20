@@ -1,9 +1,10 @@
-const TasksList = ({ tasks }) => {
+const TasksList = ({ tasks, removeTask }) => {
   return (
     <ul>
-      {tasks.map((task) => (
-        <li key={task.id}>
-          {task.content} {task.id}
+      {tasks.map(({ id, content }) => (
+        <li key={id}>
+          <button onClick={() => removeTask(id)}>🗑</button>
+          {content} {id}
         </li>
       ))}
     </ul>

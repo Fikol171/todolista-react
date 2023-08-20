@@ -11,6 +11,10 @@ function App() {
     { content: "Nauczyc sie reduxa", done: false, id: 2 },
   ]);
 
+  const removeTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   const addnewTask = (content) => {
     setTasks([
       ...tasks,
@@ -28,7 +32,7 @@ function App() {
       <Section body={<Form addnewTask={addnewTask} />} />
       <Section
         title="Tasks list"
-        body={<TasksList tasks={tasks} />}
+        body={<TasksList tasks={tasks} removeTask={removeTask} />}
         extraHeaderContent={<Buttons tasks={tasks} />}
       />
     </>
